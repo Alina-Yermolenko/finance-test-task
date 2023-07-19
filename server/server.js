@@ -32,8 +32,8 @@ function getQuotes(socket) {
     ticker,
     exchange: 'NASDAQ',
     price: randomValue(100, 300, 2),
-    change: randomValue(0, 200, 2),
-    change_percent: randomValue(0, 1, 2),
+    change: randomValue(-100, 100, 2),
+    change_percent: randomValue(-1, 1, 2),
     dividend: randomValue(0, 1, 2),
     yield: randomValue(0, 2, 2),
     last_trade_time: utcDate(),
@@ -42,14 +42,14 @@ function getQuotes(socket) {
   socket.emit('ticker', quotes);
 }
 
-function trackTickers(socket) {
+function trackTickers(socket, interval = FETCH_INTERVAL) {
   // run the first time immediately
   getQuotes(socket);
 
   // every N seconds
   const timer = setInterval(function() {
     getQuotes(socket);
-  }, FETCH_INTERVAL);
+  }, interval);
 
   socket.on('disconnect', function() {
     clearInterval(timer);
@@ -71,8 +71,8 @@ app.get('/', function(req, res) {
 });
 
 socketServer.on('connection', (socket) => {
-  socket.on('start', () => {
-    trackTickers(socket);
+  socket.on('start', (interval) => {
+    trackTickers(socket, interval);
   });
 });
 

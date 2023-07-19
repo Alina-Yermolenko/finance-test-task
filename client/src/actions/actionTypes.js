@@ -1,0 +1,3 @@
+export const TICKER_UPDATE = 'TICKER_UPDATE';
+export const SET_FETCH_INTERVAL = 'SET_FETCH_INTERVAL';
+export const SET_IS_TICKER_ON = 'SET_IS_TICKER_ON';

@@ -1,0 +1,41 @@
+.ticker__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid rgb(100, 100, 100);
+  border-radius: 10px;
+}
+
+.ticker__name {
+  background-color: lightblue;
+  height: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  align-items: center;
+}
+
+.ticker-item {
+  margin: 4px;
+}
+  
+.ticker__block-right {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-grow: 1;
+}
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}
+
+i {
+  font-size: 10px;
+}
